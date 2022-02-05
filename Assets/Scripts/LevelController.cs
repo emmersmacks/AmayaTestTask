@@ -1,6 +1,7 @@
 using UnityEngine;
 using GridController;
 using GameResurses;
+using RandomObjects;
 
 namespace LevelControllersScripts
 {
@@ -12,6 +13,8 @@ namespace LevelControllersScripts
         AddItemsForSlots spawnItemsScript;
         [SerializeField]
         GridData gridData;
+        [SerializeField]
+        RandomizeItem randomScript;
 
         bool startAnimationSlots;
         int lvlCount;
@@ -21,6 +24,11 @@ namespace LevelControllersScripts
             startAnimationSlots = true;
             lvlCount = 0;
             grid.SwitchLvl(lvlCount, startAnimationSlots);
+        }
+
+        private void RestartLevels()
+        {
+            randomScript.existingNumberArr.Clear();
         }
 
         public void NewLvlSwitch()

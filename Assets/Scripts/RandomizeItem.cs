@@ -6,7 +6,7 @@ namespace RandomObjects
 {
     public class RandomizeItem : MonoBehaviour
     {
-        List<int> existingNumberArr = new List<int>();
+        public List<int> existingNumberArr = new List<int>();
 
         public GameObject RandomTopicObj(GameObject[] PicturesObjArr)
         {

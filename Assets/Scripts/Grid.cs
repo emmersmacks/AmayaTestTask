@@ -48,9 +48,8 @@ namespace GridController
 
         private void GridTransform()
         {
-            float offsetByX = CurrentlvlColumn * (float) -1;
             float offsetByY = CurrentlvlRows * (float) -0.5;
-            transform.position = new Vector2(offsetByX, offsetByY);
+            transform.position = new Vector2(transform.position.x, offsetByY);
         }
 
         public void SwitchLvl(int newLvl, bool startMakePrefAnimation)
