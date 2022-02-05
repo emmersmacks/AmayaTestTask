@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using LevelControllersScripts;
+using GameResurses;
 
 public class TouchEvent : MonoBehaviour
 {
     [SerializeField]
     private LevelController lvlControllerScript;
+    [SerializeField]
+    private PrefabsData prefabsDataScript;
 
     void Update()
     {
@@ -20,6 +23,7 @@ public class TouchEvent : MonoBehaviour
             {
                 if (hit2D.transform.gameObject.tag == "CorrectAnswer")
                 {
+                    StartCoroutine(WaitParticleAnimation(hit2D.transform));
                     CorrectAnswerAnimation(hit2D.transform);
                     lvlControllerScript.NewLvlSwitch();
                 }
@@ -37,5 +41,12 @@ public class TouchEvent : MonoBehaviour
     private void CorrectAnswerAnimation(Transform hitTransform)
     {
         hitTransform.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 1, 2, 3f);
+    }
+
+    IEnumerator WaitParticleAnimation(Transform hitPosition)
+    {
+        GameObject instantiateObjParticle = Instantiate(prefabsDataScript.ParticlePrefab, new Vector2(hitPosition.position.x, hitPosition.position.y), Quaternion.identity);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(instantiateObjParticle);
     }
 }

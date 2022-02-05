@@ -536,6 +536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lvlControllerScript: {fileID: 984592686}
+  prefabsDataScript: {fileID: 1612147823}
 --- !u!1 &1314610900
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnItemsScript: {fileID: 1314610902}
-  instantiateObject: {fileID: 5526654464720455741, guid: 3bfff0241d5899346830ee83a11ea36d, type: 3}
+  instantiateObject: {fileID: 8914857141215102911, guid: 3bfff0241d5899346830ee83a11ea36d, type: 3}
   gridData: {fileID: 1612147821}
 --- !u!1 &1612147820
 GameObject:
@@ -611,6 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1612147822}
   - component: {fileID: 1612147821}
+  - component: {fileID: 1612147823}
   m_Layer: 0
   m_Name: Database
   m_TagString: Untagged
@@ -645,6 +647,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1612147823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612147820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4c2992a8f587a4c99d805d684cadd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParticlePrefab: {fileID: 7398449837278715383, guid: afa294087f301e54da8438216afdcb51, type: 3}
 --- !u!1 &1842665582
 GameObject:
   m_ObjectHideFlags: 0
