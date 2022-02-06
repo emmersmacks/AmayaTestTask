@@ -5,13 +5,13 @@ namespace GameResurses
 {
     public class GridData
     {
-        public List<GameObject> instantiatedEntities;
+        public List<GridSlot> instantiatedSlots = new List<GridSlot>();
 
-        public SizeGrid[] LvlsGridSize;
+        public SizeGrid[] LevelsGridSize;
 
         public GridData()
         {
-            LvlsGridSize = new SizeGrid[] 
+            LevelsGridSize = new SizeGrid[] 
             {
                 new SizeGrid(1,3),
                 new SizeGrid(2,3),
@@ -22,13 +22,13 @@ namespace GameResurses
 
     public class SizeGrid
     {
-        public int numberColumn;
-        public int numberRow;
+        public int ColumnsCount;
+        public int RowsCount;
 
         public SizeGrid(int numberRow, int numberColumn)
         {
-            this.numberColumn = numberColumn;
-            this.numberRow = numberRow;
+            this.ColumnsCount = numberColumn;
+            this.RowsCount = numberRow;
         }
     }
 }

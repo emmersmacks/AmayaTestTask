@@ -7,57 +7,51 @@ namespace LevelControllersScripts
 {
     public class LevelController : MonoBehaviour
     {
-        [SerializeField]
-        GridController.Grid grid;
-        [SerializeField]
-        AddItemsForSlots spawnItemsScript;
-        [SerializeField]
-        GridData gridData;
-        [SerializeField]
-        RandomizeItem randomScript;
-        [SerializeField]
-        RestartScript restartScript;
+        [SerializeField] private GridController.Grid _grid;
+        [SerializeField] private RestartScript _restartScript;
 
-        bool startAnimationSlots;
-        int lvlCount;
+        private RandomizeItem _randomScript = new RandomizeItem();
+        private bool _startAnimationSlots;
+        private int _levelCount;
+        private GridData _gridData;
+
+        private void Awake()
+        {
+            _gridData = new GridData();
+        }
 
         public void StartLevel()
         {
-            startAnimationSlots = true;
-            lvlCount = 0;
-            grid.SwitchLvl(lvlCount, startAnimationSlots);
-            lvlCount++;
+            _startAnimationSlots = true;
+            _levelCount = 0;
+            _grid.SwitchLevel(_levelCount, _startAnimationSlots, _gridData);
+            _levelCount++;
         }
 
-        private void RestartLevels()
+        public void NewLevelSwitch()
         {
-            randomScript.existingNumberArr.Clear();
-        }
-
-        public void NewLvlSwitch()
-        {
-            startAnimationSlots = false;
-            if (lvlCount < gridData.LvlsGridSize.Length)
+            _startAnimationSlots = false;
+            if (_levelCount < _gridData.LevelsGridSize.Length)
             {
-                restartScript.CloseRestartPanel();
+                _restartScript.CloseRestartPanel();
                 DeleteAllPrefabs();
-                grid.SwitchLvl(lvlCount, startAnimationSlots);
-                lvlCount++;
+                _grid.SwitchLevel(_levelCount, _startAnimationSlots, _gridData);
+                _levelCount++;
             }
             else
             {
-                restartScript.ShowRestartWindow();
-                lvlCount = 0;
+                _restartScript.ShowRestartWindow();
+                _levelCount = 0;
             }
         }
 
         private void DeleteAllPrefabs()
         {
-            foreach(GameObject item in gridData.instantiatedEntities)
+            foreach(var item in _gridData.instantiatedSlots)
             {
-                Destroy(item);
+                Destroy(item.gameObject);
             }
-            gridData.instantiatedEntities.Clear();
+            _gridData.instantiatedSlots.Clear();
         }
     }
 }

@@ -1,85 +1,57 @@
-
 using UnityEngine;
 using GameResurses;
-using System.Collections.Generic;
 using DG.Tweening;
 
 namespace GridController
 {
     public class Grid : MonoBehaviour
     {
+        [SerializeField] private AddItemsForSlots _spawnItemsScript;
+        [SerializeField] private GameObject _instantiateObject;
 
-        [SerializeField]
-        AddItemsForSlots spawnItemsScript;
+        private bool _startAnimationPref;
 
-        [SerializeField]
-        private GameObject instantiateObject;
-
-        private int NumberOfSlots;
-
-        private int[,] gridPrefCoord;
-        private bool startAnimationPref;
-
-        private int CurrentLvl;
-        private int CurrentlvlRows;
-        private int CurrentlvlColumn;
-
-        [SerializeField]
-        GridData gridData;
-
-        void MakeGrid()
-        {
-            int countSlots = 0;
-            for (int lvlRows = 0; lvlRows < CurrentlvlRows; lvlRows++)
-            {
-                for (int lvlColumn = 0; lvlColumn < CurrentlvlColumn; lvlColumn++)
-                {
-                    gridPrefCoord[countSlots, 0] = lvlColumn;
-                    gridPrefCoord[countSlots, 1] = lvlRows;
-                    countSlots++;
-                }
-            }
-        }
+        private SizeGrid _gridSize;
+        private GridData _gridData;
 
         private void GridTransform()
         {
-            float offsetByY = CurrentlvlRows * -0.5f + 0.5f;
-            float offsetByX = CurrentlvlColumn * - 0.5f + 0.5f;
+            var offsetByY = _gridSize.RowsCount * -0.5f + 0.5f;
+            var offsetByX = _gridSize.ColumnsCount * - 0.5f + 0.5f;
+
             transform.position = new Vector2(offsetByX, offsetByY);
         }
 
-        public void SwitchLvl(int newLvl, bool startMakePrefAnimation)
+        public void SwitchLevel(int newLevel, bool startMakePrefAnimation, GridData gridData)
         {
-            startAnimationPref = startMakePrefAnimation;
-            CurrentLvl = newLvl;
-            CurrentlvlRows = gridData.LvlsGridSize[CurrentLvl].numberRow;
-            CurrentlvlColumn = gridData.LvlsGridSize[CurrentLvl].numberColumn;
-            NumberOfSlots = CurrentlvlRows * CurrentlvlColumn;
-            gridPrefCoord = new int[NumberOfSlots, 2];
-            MakeGrid();
-            InstantiateEntities();
+            _gridData = gridData;
+            _gridSize = gridData.LevelsGridSize[newLevel];
+            _startAnimationPref = startMakePrefAnimation;
+            
+            InstantiateSlots();
             GridTransform();
-            spawnItemsScript.FillSlots(gridData.instantiatedEntities);
+
+            _spawnItemsScript.FillSlots(gridData.instantiatedSlots);
         }
 
-        private void InstantiateEntity(int x, int y)
+        private void InstantiateSlot(int x, int y)
         {
-            GameObject instantiateObj = Instantiate(instantiateObject, Vector3.zero, Quaternion.identity, transform);
-            instantiateObj.transform.localPosition = new Vector2(x,y);
-            //instantiateObj.transform.parent = transform;
-            if (startAnimationPref)
-                StartSpawnAnimation(instantiateObj.transform);
-            gridData.instantiatedEntities.Add(instantiateObj);
+            var gridSlot = Instantiate(_instantiateObject, Vector3.zero, Quaternion.identity, transform)
+                .GetComponent<GridSlot>();
+
+            gridSlot.transform.localPosition = new Vector2(x, y);
+            
+            if (_startAnimationPref)
+                StartSpawnAnimation(gridSlot.transform);
+
+            _gridData.instantiatedSlots.Add(gridSlot);
         }
 
-        private void InstantiateEntities()
+        private void InstantiateSlots()
         {
-            for (int i = 0; i < NumberOfSlots; i++)
-            {
-                int coordX = gridPrefCoord[i, 0];
-                int coordY = gridPrefCoord[i, 1];
-                InstantiateEntity(coordX, coordY);
-            }
+            for (int x = 0; x < _gridSize.ColumnsCount; x++)
+                for (int y = 0; y < _gridSize.RowsCount; y++)
+                    InstantiateSlot(x, y);
         }
 
         public void StartSpawnAnimation(Transform slot)
@@ -87,5 +59,4 @@ namespace GridController
             slot.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 1, 2, 3f);
         }
     }
-    
 }

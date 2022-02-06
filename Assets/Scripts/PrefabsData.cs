@@ -17,18 +17,16 @@ namespace GameResurses
         public Sprite[] texturesItem;
 
         public Dictionary<string, List<Sprite>> topicDict;
-        public List<string> dictKeys;
 
         private void Start()
         {
-            SortingSpriteOfTopic(out topicDict, out dictKeys);
+            SortingSpriteOfTopic(out topicDict);
             lvlControllerScript.StartLevel();
         }
 
-        public void SortingSpriteOfTopic(out Dictionary<string, List<Sprite>> cotigories, out List<string> keysOfDict)
+        public void SortingSpriteOfTopic(out Dictionary<string, List<Sprite>> cotigories)
         {
             cotigories = new Dictionary<string, List<Sprite>>(texturesItem.Length);
-            keysOfDict = new List<string>();
             foreach (Sprite sprite in texturesItem)
             {
                 string[] nameArr = sprite.name.Split('_');
@@ -37,8 +35,8 @@ namespace GameResurses
                 if (!cotigories.ContainsKey(cotigoryName))
                 {
                     cotigories.Add(cotigoryName, new List<Sprite>());
-                    keysOfDict.Add(cotigoryName);
                 }
+
                 cotigories[cotigoryName].Add(sprite);
             }
         }

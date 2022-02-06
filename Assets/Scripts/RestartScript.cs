@@ -9,19 +9,18 @@ namespace LevelControllersScripts
 {
     public class RestartScript : MonoBehaviour
     {
-        [SerializeField]
-        GameObject restartPlat;
-        [SerializeField]
-        LevelController lvlControllerScript;
-        [SerializeField]
-        TouchEvent eventScript;
+        [SerializeField] private GameObject _restartPanel;
+        [SerializeField] private GameObject _restartButton;
+        [SerializeField] private LevelController _lvlControllerScript;
+        [SerializeField] private TouchEvent _eventScript;
 
         public void ShowRestartWindow()
         {
-            restartPlat.SetActive(true);
-            restartPlat.GetComponent<Image>().DOFade(0.5f, 0.1f);
-            restartPlat.transform.GetChild(0).gameObject.SetActive(true);
-            eventScript.StopInteractScript(false);
+            _restartPanel.SetActive(true);
+            _restartPanel.GetComponent<Image>().DOFade(0.5f, 0.1f);
+
+            _restartButton.SetActive(true);
+            _eventScript.StopInteractScript(false);
         }
 
         public void RestartGame()
@@ -31,17 +30,16 @@ namespace LevelControllersScripts
 
         public void CloseRestartPanel()
         {
-            restartPlat.SetActive(false);
-            eventScript.StopInteractScript(true);
+            _restartPanel.SetActive(false);
+            _eventScript.StopInteractScript(true);
         }
 
-        IEnumerator WaitDOTweenAnimation()
+        private IEnumerator WaitDOTweenAnimation()
         {
-            restartPlat.transform.GetChild(0).gameObject.SetActive(false);
-            restartPlat.GetComponent<Image>().DOFade(1f, 0.1f);
+            _restartButton.SetActive(false);
+            _restartPanel.GetComponent<Image>().DOFade(1f, 0.1f);
             yield return new WaitForSeconds(2f);
-            lvlControllerScript.NewLvlSwitch();
-
+            _lvlControllerScript.NewLevelSwitch();
         }
     }
 }
