@@ -27,11 +27,6 @@ namespace GridController
         [SerializeField]
         GridData gridData;
 
-        private void Start()
-        {
-            
-        }
-
         void MakeGrid()
         {
             int countSlots = 0;
@@ -48,8 +43,9 @@ namespace GridController
 
         private void GridTransform()
         {
-            float offsetByY = CurrentlvlRows * (float) -0.5;
-            transform.position = new Vector2(transform.position.x, offsetByY);
+            float offsetByY = CurrentlvlRows * -0.5f + 0.5f;
+            float offsetByX = CurrentlvlColumn * - 0.5f + 0.5f;
+            transform.position = new Vector2(offsetByX, offsetByY);
         }
 
         public void SwitchLvl(int newLvl, bool startMakePrefAnimation)
@@ -68,9 +64,10 @@ namespace GridController
 
         private void InstantiateEntity(int x, int y)
         {
-            GameObject instantiateObj = Instantiate(instantiateObject, new Vector2(x, y), Quaternion.identity);
-            instantiateObj.transform.parent = transform;
-            if(startAnimationPref)
+            GameObject instantiateObj = Instantiate(instantiateObject, Vector3.zero, Quaternion.identity, transform);
+            instantiateObj.transform.localPosition = new Vector2(x,y);
+            //instantiateObj.transform.parent = transform;
+            if (startAnimationPref)
                 StartSpawnAnimation(instantiateObj.transform);
             gridData.instantiatedEntities.Add(instantiateObj);
         }

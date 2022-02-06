@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GameResurses
 {
-    public class GridData : MonoBehaviour
+    public class GridData
     {
         public List<GameObject> instantiatedEntities;
 

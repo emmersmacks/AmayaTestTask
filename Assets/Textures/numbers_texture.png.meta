@@ -4,28 +4,28 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 1422184923334757970
-    second: SD_NC_Cookies_1_0
+    second: numbers_sprite_1
   - first:
       213: 1808195818850983521
-    second: SD_NC_Cookies_1_1
+    second: numbers_sprite_2
   - first:
       213: -7900951133411543555
-    second: SD_NC_Cookies_1_2
+    second: numbers_sprite_3
   - first:
       213: -7398325283844340781
-    second: SD_NC_Cookies_1_3
+    second: numbers_sprite_5
   - first:
       213: 2267071060405275165
-    second: SD_NC_Cookies_1_4
+    second: numbers_sprite_4
   - first:
       213: -7015292045520539579
-    second: SD_NC_Cookies_1_5
+    second: numbers_sprite_6
   - first:
       213: -675344402919758444
-    second: SD_NC_Cookies_1_6
+    second: numbers_sprite_7
   - first:
       213: 3547489320769246608
-    second: SD_NC_Cookies_1_7
+    second: numbers_sprite_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -139,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_0
+      name: numbers_sprite_1
       rect:
         serializedVersion: 2
         x: 5
@@ -147,7 +147,7 @@ TextureImporter:
         width: 167
         height: 396
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_1
+      name: numbers_sprite_2
       rect:
         serializedVersion: 2
         x: 178
@@ -168,7 +168,7 @@ TextureImporter:
         width: 277
         height: 395
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,15 +181,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_2
+      name: numbers_sprite_3
       rect:
         serializedVersion: 2
-        x: 460
+        x: 459
         y: 623
         width: 271
         height: 396
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -202,7 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_3
+      name: numbers_sprite_5
       rect:
         serializedVersion: 2
         x: 746
@@ -210,7 +210,7 @@ TextureImporter:
         width: 273
         height: 395
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -223,7 +223,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_4
+      name: numbers_sprite_4
       rect:
         serializedVersion: 2
         x: 5
@@ -231,7 +231,7 @@ TextureImporter:
         width: 303
         height: 395
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,7 +244,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_5
+      name: numbers_sprite_6
       rect:
         serializedVersion: 2
         x: 313
@@ -252,7 +252,7 @@ TextureImporter:
         width: 296
         height: 396
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -265,7 +265,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_6
+      name: numbers_sprite_7
       rect:
         serializedVersion: 2
         x: 623
@@ -273,7 +273,7 @@ TextureImporter:
         width: 395
         height: 273
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -286,7 +286,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SD_NC_Cookies_1_7
+      name: numbers_sprite_8
       rect:
         serializedVersion: 2
         x: 623
@@ -294,7 +294,7 @@ TextureImporter:
         width: 394
         height: 269
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

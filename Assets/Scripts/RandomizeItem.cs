@@ -8,21 +8,32 @@ namespace RandomObjects
     {
         public List<int> existingNumberArr = new List<int>();
 
+        private void Start()
+        {
+            
+        }
+
         public GameObject RandomTopicObj(GameObject[] PicturesObjArr)
         {
             int randomInt = Random.Range(0, PicturesObjArr.Length);
             return PicturesObjArr[randomInt];
         }
 
-        public GameObject RandomItemObj(GameObject topicObj)
+        public void FillingSheetOfIndexRandom(List<Sprite> topicObj)
         {
-            int randomItemInt = 0;
-            while (existingNumberArr.Contains(randomItemInt))
+            for (int i = 0; i < topicObj.Count; i++)
             {
-                randomItemInt = Random.Range(0, topicObj.transform.childCount);
+                existingNumberArr.Add(i);
             }
-            existingNumberArr.Add(randomItemInt);
-            return topicObj.transform.GetChild(randomItemInt).gameObject;
+        }
+
+        public Sprite RandomItemObj(List<Sprite> topicObj)
+        {
+            int randomItemInt = Random.Range(0, existingNumberArr.Count - 1);
+            int index = existingNumberArr[randomItemInt];
+            Sprite selectedObj = topicObj[index];
+            existingNumberArr.RemoveAt(randomItemInt);
+            return selectedObj;
         }
     }
 }

@@ -15,15 +15,18 @@ namespace LevelControllersScripts
         GridData gridData;
         [SerializeField]
         RandomizeItem randomScript;
+        [SerializeField]
+        RestartScript restartScript;
 
         bool startAnimationSlots;
         int lvlCount;
 
-        private void Start()
+        public void StartLevel()
         {
             startAnimationSlots = true;
             lvlCount = 0;
             grid.SwitchLvl(lvlCount, startAnimationSlots);
+            lvlCount++;
         }
 
         private void RestartLevels()
@@ -34,9 +37,18 @@ namespace LevelControllersScripts
         public void NewLvlSwitch()
         {
             startAnimationSlots = false;
-            DeleteAllPrefabs();
-            lvlCount++;
-            grid.SwitchLvl(lvlCount, startAnimationSlots);
+            if (lvlCount < gridData.LvlsGridSize.Length)
+            {
+                restartScript.CloseRestartPanel();
+                DeleteAllPrefabs();
+                grid.SwitchLvl(lvlCount, startAnimationSlots);
+                lvlCount++;
+            }
+            else
+            {
+                restartScript.ShowRestartWindow();
+                lvlCount = 0;
+            }
         }
 
         private void DeleteAllPrefabs()
