@@ -396,7 +396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37db34b18e2db43409487a7eccd4a427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  existingNumberArr: 
 --- !u!4 &872612508
 Transform:
   m_ObjectHideFlags: 0
@@ -796,13 +795,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d3493adad631bd4bbf89e3735482364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemsCaseObj:
-  - {fileID: 8522460254494188521, guid: d3210a34b26483646b53a674dad9b31b, type: 3}
-  - {fileID: 2630535699081215660, guid: feefa158827d21b43b68b88a3c5c7c98, type: 3}
-  grid: {fileID: 1314610903}
-  TaskTextManager: {fileID: 1842665584}
-  randomize: {fileID: 872612507}
-  prefDataScript: {fileID: 1612147823}
+  taskTextManager: {fileID: 1842665584}
+  _prefDataScript: {fileID: 1612147823}
+  _randomize: {fileID: 872612507}
 --- !u!114 &1314610903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,8 +811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnItemsScript: {fileID: 1314610902}
-  instantiateObject: {fileID: 744559876648603753, guid: 3bfff0241d5899346830ee83a11ea36d, type: 3}
-  gridData: {fileID: 1612147821}
+  instantiateObject: {fileID: 5827970095631398511, guid: 3bfff0241d5899346830ee83a11ea36d, type: 3}
 --- !u!1 &1612147820
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cd4365e49002445811517166aca473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instantiatedEntities: []
+  instantiatedSlots: []
 --- !u!4 &1612147822
 Transform:
   m_ObjectHideFlags: 0

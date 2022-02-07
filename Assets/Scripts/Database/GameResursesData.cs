@@ -5,16 +5,11 @@ using LevelControllersScripts;
 
 namespace GameResurses
 {
-    public class PrefabsData : MonoBehaviour
+    public class GameResursesData : MonoBehaviour
     {
-        [SerializeField]
-        public LevelController lvlControllerScript;
-
-        [SerializeField]
-        public GameObject ParticlePrefab;
-
-        [SerializeField]
-        public Sprite[] texturesItem;
+        [SerializeField] public LevelController lvlControllerScript;
+        [SerializeField] public GameObject ParticlePrefab;
+        [SerializeField] public Sprite[] texturesItem;
 
         public Dictionary<string, List<Sprite>> topicDict;
         public List<string> dictKeys;

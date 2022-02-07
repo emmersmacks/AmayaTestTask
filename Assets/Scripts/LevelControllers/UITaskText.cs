@@ -8,8 +8,7 @@ namespace UIElements
 {
     public class UITaskText : MonoBehaviour
     {
-        [SerializeField]
-        Text taskText;
+        [SerializeField] Text taskText;
 
         private void Start()
         {
@@ -31,8 +30,8 @@ namespace UIElements
         {
             if(answerPrefabName.Contains("_"))
             {
-                string correctName = answerPrefabName.Substring(answerPrefabName.IndexOf("_")+1);
-                correctName = correctName.Replace("(Clone)", "");
+                string[] nameArr = answerPrefabName.Split('_');
+                string correctName = nameArr[2];
                 return correctName;
             }
             else

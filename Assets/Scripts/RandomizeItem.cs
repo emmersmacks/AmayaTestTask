@@ -1,39 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace RandomObjects
 {
     public class RandomizeItem : MonoBehaviour
     {
-        public List<int> existingNumberArr = new List<int>();
+        private static System.Random _random = new System.Random();
 
-        private void Start()
-        {
-            
-        }
+        public GameObject RandomTopicObj(GameObject[] picturesObjArr)
+            => picturesObjArr[_random.Next(0, picturesObjArr.Length)];
 
-        public GameObject RandomTopicObj(GameObject[] PicturesObjArr)
+        public List<Sprite> ChooseRandomSprites(List<Sprite> topicObj, int count)
         {
-            int randomInt = Random.Range(0, PicturesObjArr.Length);
-            return PicturesObjArr[randomInt];
-        }
-
-        public void FillingSheetOfIndexRandom(List<Sprite> topicObj)
-        {
-            for (int i = 0; i < topicObj.Count; i++)
+            if (topicObj.Count < count)
             {
-                existingNumberArr.Add(i);
+                Debug.LogError("Can't get random sprites from topic!");
+                return new List<Sprite>();
             }
-        }
 
-        public Sprite RandomItemObj(List<Sprite> topicObj)
-        {
-            int randomItemInt = Random.Range(0, existingNumberArr.Count - 1);
-            int index = existingNumberArr[randomItemInt];
-            Sprite selectedObj = topicObj[index];
-            existingNumberArr.RemoveAt(randomItemInt);
-            return selectedObj;
+            var newList = topicObj.ToList();
+            var result = new List<Sprite>(count);
+
+            for (int i = 0; i < count; i++)
+            {
+                var index = Random.Range(0, newList.Count);
+                result.Add(newList[index]);
+                newList.RemoveAt(index);
+            }
+            return result;
         }
     }
 }

@@ -9,12 +9,9 @@ namespace LevelControllersScripts
 {
     public class RestartScript : MonoBehaviour
     {
-        [SerializeField]
-        GameObject restartPlat;
-        [SerializeField]
-        LevelController lvlControllerScript;
-        [SerializeField]
-        TouchEvent eventScript;
+        [SerializeField] GameObject restartPlat;
+        [SerializeField] LevelController lvlControllerScript;
+        [SerializeField] TouchEvent eventScript;
 
         public void ShowRestartWindow()
         {
