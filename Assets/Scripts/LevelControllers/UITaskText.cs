@@ -32,7 +32,7 @@ namespace UIElements
             {
                 string[] nameArr = answerPrefabName.Split('_');
                 string correctName = nameArr[2];
-                return correctName;
+                return "Find " + correctName;
             }
             else
             {
