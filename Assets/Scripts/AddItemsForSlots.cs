@@ -9,11 +9,16 @@ namespace GridController
     public class AddItemsForSlots : MonoBehaviour
     {
         [SerializeField] private PrefabsData _prefDataScript;
+        [SerializeField] private Transform _currentAnswerPosition;
+
 
         private RandomizeItem _randomize = new RandomizeItem();
         public void ChoiceCorrectAnswer(List<GridSlot> gridSlotsNumber)
         {
-            gridSlotsNumber[Random.Range(0, gridSlotsNumber.Count - 1)].SetCoccretAnswer();
+            var slot = gridSlotsNumber[Random.Range(0, gridSlotsNumber.Count - 1)];
+            slot.SetCurretAnswer();
+
+            gridSlotsNumber.Add(Instantiate(slot, _currentAnswerPosition).GetComponent<GridSlot>());
         }
 
         public void FillSlots(List<GridSlot> gridSlotsNumber)
@@ -23,14 +28,14 @@ namespace GridController
 
             var randomSprites = _randomize.ChooseRandomSprites(spriteTopicList, gridSlotsNumber.Count);
 
+            ChoiceCorrectAnswer(gridSlotsNumber);
+
             var index = -1;
             foreach (var randomSprite in randomSprites)
             {
                 index++;
                 gridSlotsNumber[index].ChangeSprite(randomSprite);
             }
-
-            ChoiceCorrectAnswer(gridSlotsNumber);
         }
     }
 }

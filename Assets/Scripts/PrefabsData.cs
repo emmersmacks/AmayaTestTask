@@ -7,14 +7,9 @@ namespace GameResurses
 {
     public class PrefabsData : MonoBehaviour
     {
-        [SerializeField]
-        public LevelController lvlControllerScript;
-
-        [SerializeField]
-        public GameObject ParticlePrefab;
-
-        [SerializeField]
-        public Sprite[] texturesItem;
+        [SerializeField] public LevelController lvlControllerScript;
+        [SerializeField] public GameObject ParticlePrefab;
+        [SerializeField] public Sprite[] texturesItem;
 
         public Dictionary<string, List<Sprite>> topicDict;
 

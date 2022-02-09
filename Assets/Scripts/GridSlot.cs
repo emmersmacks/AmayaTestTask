@@ -14,7 +14,7 @@ public class GridSlot : MonoBehaviour
         _spriteRender = GetComponent<SpriteRenderer>();
     }
 
-    public void SetCoccretAnswer()
+    public void SetCurretAnswer()
     {
         if (_isCorrectAnswer)
         {
